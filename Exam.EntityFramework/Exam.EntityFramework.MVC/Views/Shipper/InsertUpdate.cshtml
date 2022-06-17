@@ -1,0 +1,28 @@
+﻿@model Exam.EntityFramework.MVC.Models.ShipperView
+
+@if (Model == null)
+{
+
+    ViewBag.Title = "Insertar Transportes";
+}
+else
+{
+    ViewBag.Title = "Editar Transportes";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("InsertUpdate", "Shipper", FormMethod.Post))
+{
+    <div class="row">
+
+        <div class="col-md-12">
+            @Html.LabelFor(d => d.Name)
+            @Html.TextBoxFor(d => d.Name, "", new { @class = "form-control" })
+            @Html.ValidationMessageFor(d => d.Name, null, new { @class = "text-danger" })
+        </div>
+        <div class="col-md-12" style="margin-top: 15px;">
+            <input class="btn btn-primary" value="Guardar" type="submit" />
+        </div>
+    </div>
+}

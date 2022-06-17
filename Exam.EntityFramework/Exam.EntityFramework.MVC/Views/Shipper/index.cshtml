@@ -1,0 +1,77 @@
+﻿@model List<Exam.EntityFramework.MVC.Models.ShipperView>
+
+@{
+    ViewBag.Title = "Transportes";
+}
+
+<div class="row">
+    <div class="col-md-2">
+        <h2>@ViewBag.Title.</h2>
+    </div>
+    <div class="col-md-4">
+        <a href="@Url.Action("InsertUpdate", "Shipper")" class="btn btn-primary" style="margin-top: 16px;" title="Agregar Transporte"><i class="fa fa-plus" aria-hidden="true"></i></a>
+    </div>
+</div>
+
+<table class="table table-responsive table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var shipper in Model)
+        {
+            <tr>
+                <td scope="row">@shipper.Id</td>
+                <td scope="row">@shipper.Name</td>
+                <td scope="row">
+                    <a href="@Url.Action("InsertUpdate", "Shipper", new { id = shipper.Id })" class="btn btn-success" title="Editar Transporte"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
+                    <button data-id="@shipper.Id" type="button" class="btn btn-danger btn-delete" title="Eliminar Transporte"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts
+{
+    <script>
+        $(function () {
+            $('.btn-delete').click(function () {
+                const id = $(this).data("id");
+                swal({
+                    title: 'Confirmar',
+                    text: "¿Estás seguro que desea el eliminar el transporte?",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: '¡Si, eliminar!'
+                }, function (result) {
+                    if (result) {
+
+                        const url = "@Url.Action("Delete", "Shipper")";
+                        const data = {
+                            id: id
+                        };
+
+                        $.post(url, data).done(function (data) {
+                            location.reload();
+                        }).fail(function (err) {
+                            swal(
+                                '¡Error!',
+                                err.responseText,
+                                'error'
+                            );
+                        });
+                    }
+                })
+            });
+        });
+    </script>
+}
+

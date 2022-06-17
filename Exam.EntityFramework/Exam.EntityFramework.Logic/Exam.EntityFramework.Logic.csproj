@@ -59,7 +59,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Exam.EntityFramework.Data\Exam.EntityFramework.Data.csproj">
-      <Project>{EADF543A-3701-4183-B4CC-8E45A28A67C8}</Project>
+      <Project>{eadf543a-3701-4183-b4cc-8e45a28a67c8}</Project>
       <Name>Exam.EntityFramework.Data</Name>
     </ProjectReference>
     <ProjectReference Include="..\Exam.EntityFramework.Entities\Exam.EntityFramework.Entities.csproj">

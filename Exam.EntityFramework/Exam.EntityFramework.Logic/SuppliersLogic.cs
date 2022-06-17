@@ -15,17 +15,21 @@ namespace Exam.EntityFramework.Logic
 
         public int Add(Suppliers newSupplier)
         {
-            throw new NotImplementedException();
+            _context.Suppliers.Add(newSupplier);
+            _context.SaveChanges();
+            return newSupplier.SupplierID;
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            var suppliersEliminar = _context.Suppliers.Find(id);
+            _context.Suppliers.Remove(suppliersEliminar);
+            _context.SaveChanges();
         }
 
         public Suppliers Get(int id)
         {
-            throw new NotImplementedException();
+            return _context.Suppliers.Where(s => s.SupplierID == id).FirstOrDefault();
         }
 
         public List<Suppliers> GetAll()
@@ -35,7 +39,19 @@ namespace Exam.EntityFramework.Logic
 
         public void Update(Suppliers newSupplier)
         {
-            throw new NotImplementedException();
+            var suppliersUpdate = _context.Suppliers.Find(newSupplier.SupplierID);
+            suppliersUpdate.City = newSupplier.City;
+            suppliersUpdate.Region = newSupplier.Region;
+            suppliersUpdate.ContactTitle = newSupplier.ContactTitle;
+            suppliersUpdate.PostalCode = newSupplier.PostalCode;
+            suppliersUpdate.Country = newSupplier.Country;
+            suppliersUpdate.Fax = newSupplier.Fax;
+            suppliersUpdate.ContactName = newSupplier.ContactName;
+            suppliersUpdate.HomePage = newSupplier.HomePage;
+            suppliersUpdate.Address = newSupplier.Address;
+            suppliersUpdate.Phone = newSupplier.Phone;
+            suppliersUpdate.CompanyName = newSupplier.CompanyName;
+            _context.SaveChanges();
         }
     }
 }
