@@ -1,0 +1,45 @@
+﻿@{
+    ViewBag.Title = "Personajes de Rick & Morty";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>@ViewBag.Title.</h2>
+    </div>
+    <div class="col-md-12">
+        <div id="characters-api" class="row">
+        </div>
+    </div>
+</div>
+
+@section scripts
+{
+    <script>
+        $(function () {
+
+            $.get("https://localhost:44337/api/rickmorty").done(function (data) {
+
+                data.map(function (currentValue) {
+
+                    document.getElementById('characters-api').innerHTML +=
+                        `<div class="col-md-3" style="margin: 30px; border-radius: 10px; background: #337ab7; color: white;">
+                            <div class="card" style="width: 18rem;">
+                                <img src="${currentValue.Image}" class="card-img-top" alt="" style="border-top-right-radius: 10px; border-bottom-right-radius: 10px;">
+                                <div class="card-body">
+                                    <h5 class="card-title" style="font-weight: bold;">${currentValue.Name}</h5>
+                                </div>
+                            </div>
+                        </div>`;
+                });
+
+            }).fail(function (err) {
+                swal(
+                    '¡Error!',
+                    "No se pudo cargar la lista de personajes de Rick & Morty",
+                    'error'
+                );
+            });
+
+        });
+    </script>
+}

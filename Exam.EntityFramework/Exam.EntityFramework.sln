@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTest
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam.EntityFramework.MVC", "Exam.EntityFramework.MVC\Exam.EntityFramework.MVC.csproj", "{6893F824-D2AA-4911-A895-5D211A327267}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam.EntityFramework.API", "Exam.EntityFramework.API\Exam.EntityFramework.API.csproj", "{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{6893F824-D2AA-4911-A895-5D211A327267}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6893F824-D2AA-4911-A895-5D211A327267}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6893F824-D2AA-4911-A895-5D211A327267}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
