@@ -10,7 +10,7 @@ using System.Web.Http.Cors;
 
 namespace Exam.EntityFramework.API.Controllers
 {
-    [EnableCors(origins: "https://localhost:44337", headers: "*", methods: "*")]
+    [EnableCors(origins: "https://localhost:44337,http://localhost:4200", headers: "*", methods: "*")]
     public class ShippersController : ApiController
     {
         private readonly ILogic<Shippers> shipperLogic;
@@ -44,11 +44,16 @@ namespace Exam.EntityFramework.API.Controllers
                     Name = s.CompanyName
                 }).ToList();
 
+                if (shippersViews == null)
+                {
+                    return NotFound();
+                }
+
                 return Ok(shippersViews);
             }
             catch (Exception e)
             {
-                return NotFound();
+                return BadRequest("Ocurrió un error. \nMotivo: " + e.Message);
             }
         }
 
@@ -80,7 +85,7 @@ namespace Exam.EntityFramework.API.Controllers
             }
             catch (Exception e)
             {
-                return NotFound();
+                return BadRequest("Ocurrió un error. \nMotivo: " + e.Message);
             }
         }
 
@@ -107,11 +112,11 @@ namespace Exam.EntityFramework.API.Controllers
                     return Ok(shipperEntity);
                 }
 
-                return BadRequest(ModelState.ToString());
+                return BadRequest("Ocurrió un error. \nMotivo: " + ModelState.ToString());
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest("Ocurrió un error. \nMotivo: " + e.Message);
             }
         }
 
@@ -141,11 +146,11 @@ namespace Exam.EntityFramework.API.Controllers
 
                 }
 
-                return BadRequest(ModelState.ToString());
+                return BadRequest("Ocurrió un error. \nMotivo: " + ModelState.ToString());
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest("Ocurrió un error. \nMotivo: " + e.Message);
             }
         }
 
@@ -162,27 +167,24 @@ namespace Exam.EntityFramework.API.Controllers
         {
             try
             {
-                try
-                {
-                    shipperLogic.Delete(id);
-                    return Ok("El transporte se ha eliminado correctamente");
-                }
-                catch (System.FormatException e)
-                {
-                    return BadRequest("No se pudo eliminar el transporte. \nMotivo: seguro ingreso una letra o no ingreso nada");
-                }
-                catch (System.ArgumentNullException)
-                {
-                    return NotFound();
-                }
-                catch (System.Data.Entity.Infrastructure.DbUpdateException e)
-                {
-                    return BadRequest("No se pudo eliminar el transporte. \nMotivo: el transporte que desea eliminar está siendo utilizado como referencia.");
-                }
+                shipperLogic.Delete(id);
+                return Ok("El transporte se ha eliminado correctamente");
+            }
+            catch (System.FormatException e)
+            {
+                return BadRequest("No se pudo eliminar el transporte. \nMotivo: seguro ingreso una letra o no ingreso nada. \nInfo: " + e.Message);
+            }
+            catch (System.ArgumentNullException)
+            {
+                return NotFound();
+            }
+            catch (System.Data.Entity.Infrastructure.DbUpdateException e)
+            {
+                return BadRequest("No se pudo eliminar el transporte. \nMotivo: el transporte que desea eliminar está siendo utilizado como referencia. \nInfo: " + e.Message);
             }
             catch (Exception e)
             {
-                return BadRequest();
+                return BadRequest("Ocurrió un error. \nMotivo: " + e.Message);
             }
         }
     }

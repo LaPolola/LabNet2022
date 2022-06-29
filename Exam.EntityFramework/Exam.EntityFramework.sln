@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam.EntityFramework.MVC", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Exam.EntityFramework.API", "Exam.EntityFramework.API\Exam.EntityFramework.API.csproj", "{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}"
 EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "Exam.EntityFramework.Angular", "Exam.EntityFramework.Angular\Exam.EntityFramework.Angular.esproj", "{EB27220C-4790-467C-814A-7187268865D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,12 @@ Global
 		{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DF6F1380-E1F2-44AD-9B3A-1BF6F9FD58EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB27220C-4790-467C-814A-7187268865D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB27220C-4790-467C-814A-7187268865D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB27220C-4790-467C-814A-7187268865D3}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{EB27220C-4790-467C-814A-7187268865D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB27220C-4790-467C-814A-7187268865D3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB27220C-4790-467C-814A-7187268865D3}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

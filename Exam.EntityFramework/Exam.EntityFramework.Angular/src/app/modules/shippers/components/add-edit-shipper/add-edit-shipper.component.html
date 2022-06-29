@@ -1,0 +1,11 @@
+<form [formGroup]="formShippers" (ngSubmit)="sendShipper()">
+  <div class="form-group mt-2">
+    <label for="name" class="form-label">Nombre <span class="text-danger">*</span></label>
+    <input type="text" formControlName="name" class="form-control" name="name" [(ngModel)]="shipper.Name" [ngClass]="{ 'is-invalid': f['name'].touched && f['name'].errors }" placeholder="Nombre" >
+    <div *ngIf="f['name'].touched && f['name'].errors" class="invalid-feedback">
+      <div *ngIf="f['name'].errors['required']">Nombre es requerido</div>
+      <div *ngIf="f['name'].errors['maxlength']">El máximo es 40 carácteres</div>
+    </div>
+  </div>
+  <button type="submit" [ngClass]="shipper.Id == 0 ? 'btn-primary' : 'btn-success'" class="btn btn-primary mt-3" [disabled]="this.formShippers.invalid">{{ buttonName }}</button>
+</form>
